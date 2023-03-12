@@ -1,29 +1,36 @@
-Required;
+//Required;
 const fs = require("fs");
 const router = require("express").Router();
-const db = require("./Develop/db/db.json");
 const path = require("path");
 
+
 //GET request
-router.get("/api/notes", (req, res) => {
-  fs.readFileSync("./db/db.json", "utf8", (err, data) => {
+router.get('/api/notes', (req, res) => {
+  fs.readFile('./db/db.json', "utf8", (err, data) => {
     if (err) throw err;
-    res.json(JSON.parse(data));
+    console.log(JSON.parse(data))
+    res.send(data);
   });
 });
 
-// POST
-// router.post('/api/notes', (req, res) => {
-//   fs.readFile("./db/db.json", "utf8", (err, data) => {
-//     if (err) throw err;
-//     const getNote = JSON.parse(data);
-//     getNote.push(req.body);
-//     fs.writeFile("./db.db.json", JSON.stringify(getNote), (err) => {
-//       if (err) return err;
-//       console.log('yay');
-//     })
-//   })
-// });
+//POST
+router.post('api/notes/', (req, res) => {
+  const newNote = {
+    title: req.body.title,
+    text: req.body.text
+  }
+  fs.readFile('./db/db.json', (err,data) => {
+    if(err) throw err;
+    const newText = JSON.parse(data);
+    newText.push(newNote);
+    fs.writeFile('./db/db.json', JSON.stringify(newText), (err) => {
+      if (err) throw err;
+        res.send(newText);
+      })
+  });
+});
+
+
 
 // //DELETE
 

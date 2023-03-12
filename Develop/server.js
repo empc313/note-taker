@@ -17,8 +17,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 
 //Routes
-app.use('/api/notes', apiRoute);
-app.use('/api', htmlRoute);
+app.use(apiRoute);
+app.use(htmlRoute);
 
 
 app.use(express.static('public'));
