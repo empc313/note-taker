@@ -3,8 +3,8 @@ const express = require("express");
 const path = require("path");
 
 //Require routes
-const apiRoute = require("./public/routes/apiRoutes");
-const htmlRoute = require("./public/routes/htmlRoutes");
+const apiRoute = require("./routes/apiRoutes");
+const htmlRoute = require("./routes/htmlRoutes");
 
 //express
 const app = express();
@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true}));
 
 //Routes
 app.use('/api/notes', apiRoute);
-app.use('/api', htmlRoute);
+app.use(htmlRoute);
 
 
 app.use(express.static('public'));
