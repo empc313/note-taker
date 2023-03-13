@@ -1,4 +1,4 @@
-# Note Taker Starter Code
+# Note Taker Express
 
 # Description
 - an app that allows you to take notes and save each note by clicking the save button, and can recall past notes by clicking on the note in the sidebar
